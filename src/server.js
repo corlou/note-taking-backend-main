@@ -1,6 +1,23 @@
+const dotenv = require('dotenv')
+dotenv.config();
+
 const express = require('express');
 const mongoose = require('mongoose')
 const app = express();
+
+const PORT = process.env.PORT || 3001
+const HOST = process.env.HOST || '127.0.0.1'
+
+const helmet = require('helmet')
+app.use(Helmet());
+app.use(helmet.permittedCrossDomainPolicies());
+app.use(helmet.referrerPolicy());
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["self"]
+  }
+}))
+
 
 app.use(express.json());
 
@@ -25,5 +42,5 @@ const notesRouter = require('./routes/notes_routes')
 app.use("/notes", notesRouter)
 
 module.exports = {
-  app
+  app, HOST, PORT
 }
