@@ -6,7 +6,7 @@ notesRouter.get("/", getNotes)
 
 notesRouter.get("/my_notes", getMyNotes)
 
-notesRouter.get("/:id", getNote)
+notesRouter.get("/:id", getNote) // to use ID, must have the : symbol
 
 notesRouter.post("/", createNote)
 

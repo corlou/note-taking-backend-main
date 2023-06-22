@@ -34,7 +34,7 @@ const getMyNotes = async (request, response) => {
 
 const getNote = async (request, response) => {
   let note = await Note.findById(request.params.id) //params contains the key and value of the route params :id 
-    .catch(error => {  // mongoose methos can handle errors with catch
+    .catch(error => {  // mongoose methods can handle errors with catch
       console.log("Some error while accessing data:\n" + error)
       response.status(404)
     })
